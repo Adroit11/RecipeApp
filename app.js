@@ -17,7 +17,28 @@ app.get('/', (req, res) =>
 )
 
 app.post('/add-recipe', (req, res) => 
-    res.send('add')
+    res.send(req.body)
+)
+
+app.get('/recipe/:recipe_id', (req, res) => 
+    res.json({
+        status: 'success',
+        message: `You requested for recipe ${req.params.recipe_id}`
+    })
+)
+
+app.put('/recipe/:recipe_id', (req, res) => 
+    res.json({
+        status: 'success',
+        message: `You updated recipe ${req.params.recipe_id}`
+    })
+)
+
+app.delete('/recipe/:recipe_id', (req, res) => 
+    res.json({
+        status: 'success',
+        message: `You deleted recipe ${req.params.recipe_id}`
+    })
 )
 
 app.listen(port, () => 
